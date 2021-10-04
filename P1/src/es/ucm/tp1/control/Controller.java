@@ -39,7 +39,49 @@ public class Controller {
 
 	public void run() {
 		// TODO fill your code
-		printGame();
+		boolean refrescarTablero = true;
+		boolean terminado = false;
+		while( !terminado ) {
+			if(refrescarTablero)
+			{
+				printGame();
+			}
+			System.out.println(PROMPT);
+			String line=scanner.nextLine();
+			String[] words=line.toLowerCase().trim().split(" ");
+			System.out.println("Debug Executing " + line);
+			if(words.length==0)
+			{ 
+				System.out.println(String.format("ERROR &s, " + UNKNOWN_COMMAND_MSG));
+			}
+			else
+			{
+				{
+					switch (words[0])
+					{
+					case "i":
+					case "info":
+						System.out.println(game.getInfo());
+					case "q":
+						game.goUp();
+					case "a":
+						game.goDown();
+					case "return":
+						game.reiniciar();
+					case "exit":
+						terminado=true;
+					case "help":
+						for(int i =0;i<HELP.length;i++) {
+							System.out.println(HELP[i]);
+						}
+						
+					}
+					
+				}
+			}
+			
+		}
+		System.out.println("GAME OVER");
 	}
 
 }

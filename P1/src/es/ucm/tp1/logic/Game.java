@@ -43,4 +43,20 @@ public class Game {
 		str.append("estado...\n");
 		return str;
 	}
+	public char[] getInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void goUp() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void goDown() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void reiniciar() {
+		// TODO Auto-generated method stub
+		
+	}
 }
