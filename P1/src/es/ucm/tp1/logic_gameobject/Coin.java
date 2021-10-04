@@ -10,8 +10,8 @@ public class Coin {
 	isInPosition(x,y)
 	toString()
 	*/
-	private static 
-	private final static String SYMBOLS = "¢";
+	
+	private final static String a = " ";
 	void receiveCollision() {
 		
 		

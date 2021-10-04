@@ -8,5 +8,5 @@ public class Obstacle {
 	private static int Resistencia = 1;
 	private static int x;
 	private static int y;
-	private final static String SYMBOL = "░";
+	private final static String SYMBOL = " ";
 }

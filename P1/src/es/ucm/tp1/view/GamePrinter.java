@@ -7,9 +7,9 @@ public class GamePrinter {
 
 	private static final String SPACE = " ";
 
-	private static final String ROAD_BORDER_PATTERN = "‚ïê";
+	private static final String ROAD_BORDER_PATTERN = "®T";
 
-	private static final String LANE_DELIMITER_PATTERN = "‚îÄ";
+	private static final String LANE_DELIMITER_PATTERN = "©§";
 
 	private static final int CELL_SIZE = 7;
 
