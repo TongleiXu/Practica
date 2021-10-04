@@ -7,7 +7,7 @@ public class GamePrinter {
 
 	private static final String SPACE = " ";
 
-	private static final String ROAD_BORDER_PATTERN = "иT";
+	private static final String ROAD_BORDER_PATTERN = "=";
 
 	private static final String LANE_DELIMITER_PATTERN = "йд";
 
