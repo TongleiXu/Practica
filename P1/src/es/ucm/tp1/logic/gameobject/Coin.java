@@ -1,4 +1,4 @@
-package es.ucm.tp1.logic_gameobject;
+package es.ucm.tp1.logic.gameobject;
 
 public class Coin {
 	

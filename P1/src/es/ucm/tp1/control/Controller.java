@@ -42,10 +42,7 @@ public class Controller {
 		boolean refrescarTablero = true;
 		boolean terminado = false;
 		while( !terminado ) {
-			if(refrescarTablero)
-			{
-				printGame();
-			}
+			if(refrescarTablero) printGame();		
 			System.out.println(PROMPT);
 			String line=scanner.nextLine();
 			String[] words=line.toLowerCase().trim().split(" ");

@@ -52,5 +52,11 @@ public enum Level {
 	public int getWidth() {
 		return width;
 	}
+	public double getObs_f() {
+		return obstacleFrequency;
+	}
+	public double getCoin_f() {
+		return coinFrequency;
+	}
 	
 }

@@ -3,7 +3,7 @@ package es.ucm.tp1.logic;
 import java.util.Random;
 
 import es.ucm.tp1.control.Level;
-import es.ucm.tp1.logic_gameobject.*;
+import es.ucm.tp1.logic.gameobject.*;
 import es.ucm.tp1.view.GamePrinter;
 
 public class Game {
@@ -15,6 +15,8 @@ public class Game {
 	
 	private Random rand;
 	private long seed;
+	private int numObs;
+	prinvate int numCoins;
 	
 	private static boolean testMode = false;
 	
@@ -37,15 +39,19 @@ public class Game {
 	public String toString() {
 		return printer.toString();
 	}
-	public Object getGameStatus() {
+	public String getGameStatus() {
 		// TODO Auto-generated method stub
 		StringBuilder str = new StringBuilder();
 		str.append("estado...\n");
-		return str;
+		return str.toString();
 	}
-	public char[] getInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getInfo() {
+		StringBuilder str = new StringBuilder();
+		str.append("\n Available objects: \n" +		
+					"[Car] the racing car\n" +
+					"[Coin] gives 1 coin to the player\n" +
+					"[Obstacle] hits car)\n");
+		return str.toString();
 	}
 	public void goUp() {
 		// TODO Auto-generated method stub
@@ -57,6 +63,10 @@ public class Game {
 	}
 	public void reiniciar() {
 		// TODO Auto-generated method stub
+		
+	}
+	//metodo auxiliar
+	void inicializaci¨®n() {
 		
 	}
 }
