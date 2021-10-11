@@ -46,12 +46,18 @@ public enum Level {
 		return buffer.toString();
 	}
 	//my code
-	public int getLength() {
+	public int getVisibility() {
+		return this.visibility;
+	}
+	public int  getRoadWidth() {
+		return this.width;
+	}
+	/*public int getLength() {
 		return length;
 	}
 	public int getWidth() {
 		return width;
-	}
+	}*/
 	public double getObs_f() {
 		return obstacleFrequency;
 	}

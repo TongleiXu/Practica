@@ -37,6 +37,7 @@ public class SuperCars {
 				usage();
 			} else {
 				Long seed;
+				
 				try {
 					if (args.length == 2) {
 						seed = Long.parseLong(args[1]);
@@ -48,8 +49,8 @@ public class SuperCars {
 
 					System.out.println("Level: " + level.name());
 					System.out.println(SEED_INFO_MSG + seed);
-
-					Game game = new Game(seed, level); 
+					boolean isTestMode = level.name() == "TEST";
+					Game game = new Game(seed, level, isTestMode); 
 					if( Level.TEST.equals(level))
 						game.toggleTest();
 					

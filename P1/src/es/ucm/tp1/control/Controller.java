@@ -38,14 +38,16 @@ public class Controller {
 	}
 
 	public void run() {
-		// TODO fill your code
-		boolean refrescarTablero = true;
+		boolean refreshDisplay = true;
 		boolean terminado = false;
-		while( !terminado ) {
-			if(refrescarTablero) printGame();		
+		
+		while(!game.isFinished()) {
+			if(refreshDisplay) printGame();	
+				
 			System.out.println(PROMPT);
 			String line=scanner.nextLine();
 			String[] words=line.toLowerCase().trim().split(" ");
+			
 			System.out.println("Debug Executing " + line);
 			if(words.length==0)
 			{ 
@@ -56,29 +58,59 @@ public class Controller {
 				{
 					switch (words[0])
 					{
+					case "h":
+					case "help":
+						for(int i =0;i<HELP.length;i++) 
+							System.out.println(HELP[i]);
+						refreshDisplay = false;
+						break;
+						
 					case "i":
 					case "info":
 						System.out.println(game.getInfo());
-					case "q":
+						 refreshDisplay = false;
+						 break;
+						 
+					case "":
+					case "n":
+					case "none":
+						game.update();
+						refreshDisplay = true;
+						break;
+						
+					case "q":					
 						game.goUp();
+						refreshDisplay = true;
+						break;
+						 
 					case "a":
 						game.goDown();
-					case "return":
-						game.reiniciar();
+						refreshDisplay = true;
+						break;
+					case "e":	
 					case "exit":
 						terminado=true;
-					case "help":
-						for(int i =0;i<HELP.length;i++) {
-							System.out.println(HELP[i]);
-						}
-						
+						refreshDisplay = false;
+						break;
+					case "r":
+					case "reset":
+						game.reset();
+						refreshDisplay = true;
+						break;
+					case "t":
+					case "test":
+						game.setTestMode();
+						refreshDisplay = false;
+						break;
+					default:
+    					System.out.println("[ERROR]" + UNKNOWN_COMMAND_MSG);
 					}
 					
 				}
 			}
 			
 		}
-		System.out.println("GAME OVER");
+		System.out.println("[GAME OVER] " + game.getEndGameMessage());
 	}
 
 }

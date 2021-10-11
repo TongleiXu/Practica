@@ -11,24 +11,54 @@ public class Game {
 	private Player player;
 	private Obstacle obstacles;
 	private Coin coins;
-	private Level level;
-	
+	private Level level;	
 	private Random rand;
-	private long seed;
-	private int numObs;
-	prinvate int numCoins;
 	
+	
+	private long seed;
+	private boolean TestMode;
+	private int numObs;
+	private int numCoins;
+	private int cycles;
 	private static boolean testMode = false;
 	
-	
-	public Game(Long seed, Level level) {
+	//3.1
+	public Game(Long seed, Level level, boolean isTestMode) {
 		this.seed = seed;
 		this.level = level;
-		printer = new GamePrinter(this,level.getLength(),level.getWidth());
+		//record
+		this.TestMode = isTestMode;
+		//Y llama al reset() en su ¨²ltima instrucci¨®n
+		reset();
 	}
-	public String positionToString(int x, int y) {
+	//3.2
+	public String getInfo() {
 		StringBuilder str = new StringBuilder();
+		str.append("\n Available objects: \n" +		
+					"[Car] the racing car\n" +
+					"[Coin] gives 1 coin to the player\n" +
+					"[Obstacle] hits car)\n");
+		return str.toString();
+	}
+	//3.3
+	public void update() {
+		//update player
+		player.update();
+		//Remueve muertos de las listas: removeDead
+		coins.update();
+		obstacles.update();	
+		// suma uno al ciclo actual 
+		cycle += 1;
+				
+	}
+	//3.8
+	public String positionToString(int x, int y) {
 		
+		StringBuilder str = new StringBuilder();
+		int relativeX = player.getX() + x;
+		if (player.isInPosition(relativeX, y))
+			str.append(player);
+		else if()
 		return str.toString();
 	}
 	public void toggleTest() {
@@ -45,14 +75,8 @@ public class Game {
 		str.append("estado...\n");
 		return str.toString();
 	}
-	public String getInfo() {
-		StringBuilder str = new StringBuilder();
-		str.append("\n Available objects: \n" +		
-					"[Car] the racing car\n" +
-					"[Coin] gives 1 coin to the player\n" +
-					"[Obstacle] hits car)\n");
-		return str.toString();
-	}
+	
+	//COMMAND-------------------------------------------------
 	public void goUp() {
 		// TODO Auto-generated method stub
 		
@@ -61,12 +85,32 @@ public class Game {
 		// TODO Auto-generated method stub
 		
 	}
-	public void reiniciar() {
-		// TODO Auto-generated method stub
+	public void reset() {
+		printer = new GamePrinter(this,level.getVisibility(),level.getRoadWidth());
+		player = new Player(0, 1);//posicion inicial player(x, y)
+		rand = new Random(seed);
 		
+		this.cycles = 0;
+		
+		
+				
 	}
+	public void setTestMode() {
+		this.TestMode = true;
+	}
+	//-----------------------------------------------------------------
 	//metodo auxiliar
 	void inicializaci¨®n() {
 		
 	}
+	public boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public String getEndGameMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
