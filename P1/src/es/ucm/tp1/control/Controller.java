@@ -42,22 +42,21 @@ public class Controller {
 		boolean terminado = false;
 		
 		while(!game.isFinished()) {
-			if(refreshDisplay) printGame();	
-				
+			if(refreshDisplay) {
+				printGame();	
+			}
+			
 			System.out.println(PROMPT);
 			String line=scanner.nextLine();
 			String[] words=line.toLowerCase().trim().split(" ");
 			
-			System.out.println("Debug Executing " + line);
+			System.out.println("[DEBUG] Executing: " + line);
 			if(words.length==0)
 			{ 
 				System.out.println(String.format("ERROR &s, " + UNKNOWN_COMMAND_MSG));
 			}
-			else
-			{
-				{
-					switch (words[0])
-					{
+			else{
+					switch (words[0]){
 					case "h":
 					case "help":
 						for(int i =0;i<HELP.length;i++) 
@@ -89,7 +88,7 @@ public class Controller {
 						break;
 					case "e":	
 					case "exit":
-						terminado=true;
+						game.exit();
 						refreshDisplay = false;
 						break;
 					case "r":
@@ -100,16 +99,17 @@ public class Controller {
 					case "t":
 					case "test":
 						game.setTestMode();
-						refreshDisplay = false;
+						refreshDisplay = true;
 						break;
 					default:
     					System.out.println("[ERROR]" + UNKNOWN_COMMAND_MSG);
 					}
 					
-				}
+				
 			}
-			
 		}
+		if (refreshDisplay) 
+    		printGame();
 		System.out.println("[GAME OVER] " + game.getEndGameMessage());
 	}
 

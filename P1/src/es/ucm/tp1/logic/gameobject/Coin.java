@@ -1,40 +1,44 @@
 package es.ucm.tp1.logic.gameobject;
 
+import es.ucm.tp1.logic.Game;
+
 public class Coin {
 	
 /*Comportamiento: No se mueve. 
  * Cuando el coche pasa por encima, el jugador incrementa su
- *  n煤mero de monedas en 1 unidad y el objeto Coin desaparece
+ *  numero de monedas en 1 unidad y el objeto Coin desaparece
 */
 	
-	
-	private final static String a = "¢";
+	//¢
+	private final static String SYMBOL = "¢";
 	private int x;
 	private int y;
-	public Coin(int x, int y) {
+	private boolean alive;
+	private Game game;
+	
+	public Coin(Game g, int x, int y) {
 		this.x = x;
 		this.y = y;
+		game = g;
+		this.alive = true;
 		
-	}
-	void receiveCollision(Player player) {
-		
-		/*que proceso hago si el player choca con una coin:
-			o le doy la coin
-			o la coin deja de estar viva 
-*/
-	}
-	public boolean isInPosition(int relativeX, int y) {
-		return relativeX == getX() && y == getY();
-	}
-	public String toString() {
-		return a;
 	}
 	
-	/*public void update() {
-		// TODO Auto-generated method stub
-		
+	public boolean isInPosition(int x, int y) {
+		return x == this.x && y == this.y;
 	}
-	*/
+	public String toString() {
+		return SYMBOL;
+	}
+	
+	public void update() {//no hace nada
+	}
+	protected void receiveCollision(Player p) {
+		alive = false;
+	}
+	protected boolean isAlive() {
+		return alive;
+	}
 	
 	//aux
 	public int getX() {

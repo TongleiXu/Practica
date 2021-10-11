@@ -49,9 +49,9 @@ public class GamePrinter {
 	private void encodeGame(Game game) {
 		// TODO fill your code
 		board = new String[numRows][numCols];
-		for(int x = 0; x < numRows; x++) {
-			for(int y = 0; y< numCols; y++) {
-				board[x][y] = game.positionToString(x, y);
+		for(int y = 0; y < numRows; y++) {
+			for(int x = 0; x< numCols; x++) {
+				board[y][x] = game.positionToString(x, y);
 			}
 		}
 	}

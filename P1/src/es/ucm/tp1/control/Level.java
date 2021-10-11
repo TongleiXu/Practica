@@ -52,16 +52,13 @@ public enum Level {
 	public int  getRoadWidth() {
 		return this.width;
 	}
-	/*public int getLength() {
+	public int getRoadLength() {
 		return length;
 	}
-	public int getWidth() {
-		return width;
-	}*/
-	public double getObs_f() {
+	public double obstacleFrequency() {
 		return obstacleFrequency;
 	}
-	public double getCoin_f() {
+	public double coinFrequency() {
 		return coinFrequency;
 	}
 	

@@ -9,16 +9,38 @@ public class Obstacle {
 */
 	private Game game;
 	
-	private static int Resistencia = 1;
-	private static int x;
-	private static int y;
-	private final static String SYMBOL = "�?";
-	public Obstacle(Game game) {
+	private boolean alive;
+	private int x;
+	private int y;
+	private final static String SYMBOL = "░";//░
+	public Obstacle(Game game, int x, int y) {
 		this.game = game;
+		this.x = x;
+		this.y = y;
+		this.alive = true;
+	}
+	public void update() {// no hace nada
 		
 	}
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	
+	public boolean isInPosition(int x, int y) {
+		return x == this.x && y == this.y;
 	}
+	public String toString() {
+		return SYMBOL;
+	}
+	protected void receiveCollision(Player p) {
+		alive = false;
+	}
+	protected boolean isAlive() {
+		return alive;
+	}
+	//aux
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	
 }

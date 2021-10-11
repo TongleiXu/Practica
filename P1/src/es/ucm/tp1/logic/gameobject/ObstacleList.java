@@ -1,23 +1,21 @@
 package es.ucm.tp1.logic.gameobject;
 
-import es.ucm.tp1.logic.Game;
-
-
 public class ObstacleList {
-	private Game game;
-	private Obstacle[] ObstacleList;
 	
-	public ObstacleList() {
-		ObstacleList = new Obstacle[game.]
+	private Obstacle[] obstacles;
+	private static int obstacleCount;
+	
+	public ObstacleList(int size) {
+		obstacles = new Obstacle[size];
+		obstacleCount = 0;
 	}
 	
 	
-	public void add(Coin coin) {
-		
-	}
-	public Coin getObjectInPosition(int x, int y) {
-		
-		return null;
+	public void add(Obstacle o) {
+		if(!llena()) {
+			obstacles[obstacleCount] = o;
+			obstacleCount++;
+		}
 	}
 	public boolean isPositionEmpty(int x, int y) {
 		return getObjectInPosition(x, y) == null;
@@ -26,5 +24,17 @@ public class ObstacleList {
 	public void removeDead() {
 		//crea otra lsita auxiliar, copia solo las monedas que est¨¢n vivas
 	}
-
+	public Obstacle getObjectInPosition(int x, int y) {
+		int i = 0;
+		while(i < obstacleCount  && !obstacles[i].isInPosition(x, y)) 
+			i++;
+		return obstacles[i];
+	}
+	public int getObstaclesCount() {
+		return obstacleCount;
+	}
+	//aux
+	public boolean llena() {
+		return obstacleCount == obstacles.length;
+	}
 }
